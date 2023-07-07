@@ -28,8 +28,7 @@ export default function Home() {
         >
           <div
             style={{
-              maxWidth: '600px',
-              width: '600px',
+              maxWidth: '300px',
               display: 'flex',
               flexDirection: 'column',
               gap: '2rem',
@@ -67,7 +66,9 @@ export default function Home() {
             >
               <a
                 href="https://metamask.app.link/send/0x5A2609D698DE041B1Ba77139A4229c8a161dDd9e?value=1e16
+                
 "
+                style={{ wordBreak: 'break-all' }}
               >
                 https://metamask.app.link/send/0x5A2609D698DE041B1Ba77139A4229c8a161dDd9e?value=1e16
               </a>
