@@ -38,7 +38,7 @@ const ContractRead = () => {
     <>
       {name && symbol && decimals && totalSupply && (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <p>token address : {address}</p>
+          <p style={{ wordBreak: 'break-all' }}>token address : {address}</p>
           <p>token name : {name}</p>
           <p>token symbol : {symbol}</p>
           <p>token decimals : {decimals}</p>
