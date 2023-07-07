@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <Layout className="layout">
-      <Content style={{ padding: '50px' }}>
+      <Content style={{ padding: '20px' }}>
         <div
           className="site-layout-content"
           style={{
