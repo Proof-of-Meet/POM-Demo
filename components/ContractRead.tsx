@@ -10,7 +10,7 @@ const tokenAddress = {
 };
 
 const ContractRead = () => {
-  const [address, setAddress] = useState(tokenAddress.usdc);
+  const [address, setAddress] = useState<any>(tokenAddress.usdc);
   const { data: name } = useContractRead({
     address: address,
     abi: erc20ABI,
@@ -35,36 +35,35 @@ const ContractRead = () => {
   });
 
   return (
-    name &&
-    symbol &&
-    decimals &&
-    totalSupply && (
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <p>token address : {address}</p>
-        <p>token name : {name}</p>
-        <p>token symbol : {symbol}</p>
-        <p>token decimals : {decimals}</p>
-        <p>token totalSupply : {formatUnits(totalSupply, decimals)}</p>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-          <Button
-            type="primary"
-            onClick={() => {
-              setAddress(tokenAddress.usdc);
-            }}
-          >
-            USDC
-          </Button>
-          <Button
-            type="primary"
-            onClick={() => {
-              setAddress(tokenAddress.dai);
-            }}
-          >
-            DAI
-          </Button>
+    <>
+      {name && symbol && decimals && totalSupply && (
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <p>token address : {address}</p>
+          <p>token name : {name}</p>
+          <p>token symbol : {symbol}</p>
+          <p>token decimals : {decimals}</p>
+          <p>token totalSupply : {formatUnits(totalSupply, decimals)}</p>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+            <Button
+              type="primary"
+              onClick={() => {
+                setAddress(tokenAddress.usdc);
+              }}
+            >
+              USDC
+            </Button>
+            <Button
+              type="primary"
+              onClick={() => {
+                setAddress(tokenAddress.dai);
+              }}
+            >
+              DAI
+            </Button>
+          </div>
         </div>
-      </div>
-    )
+      )}
+    </>
   );
 };
 

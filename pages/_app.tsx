@@ -14,10 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     setMounted(true);
   }, []);
 
-  const { chains, publicClient } = configureChains(
-    [mainnet],
-    [publicProvider()]
-  );
+  const { publicClient } = configureChains([mainnet], [publicProvider()]);
 
   const config = createConfig({
     connectors: [
@@ -32,7 +29,6 @@ export default function App({ Component, pageProps }: AppProps) {
       }),
     ],
 
-    chains,
     publicClient,
   });
 

@@ -10,15 +10,15 @@ const ContractWrite = () => {
     value: parseEther('0.01'),
   });
 
-  const { write } = useContractWrite({
-    address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-    abi: erc20ABI,
-    functionName: 'transfer',
-    args: ['0x5A2609D698DE041B1Ba77139A4229c8a161dDd9e', 1 ** 18],
-    onError(error) {
-      console.log('Error', error);
-    },
-  });
+  // const { write } = useContractWrite({
+  //   address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  //   abi: erc20ABI,
+  //   functionName: 'transfer',
+  //   args: ['0x5A2609D698DE041B1Ba77139A4229c8a161dDd9e', 1 ** 18],
+  //   onError(error) {
+  //     console.log('Error', error);
+  //   },
+  // });
 
   return (
     <div>
