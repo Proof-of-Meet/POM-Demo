@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import { useState } from 'react';
-import { formatUnits } from 'viem';
+import { Hash, formatUnits } from 'viem';
 import { useContractRead } from 'wagmi';
 import { erc20ABI } from 'wagmi';
 
@@ -10,26 +10,26 @@ const tokenAddress = {
 };
 
 const ContractRead = () => {
-  const [address, setAddress] = useState<any>(tokenAddress.usdc);
+  const [address, setAddress] = useState(tokenAddress.usdc);
   const { data: name } = useContractRead({
-    address: address,
+    address: address as Hash,
     abi: erc20ABI,
     functionName: 'name',
   });
 
   const { data: symbol } = useContractRead({
-    address: address,
+    address: address as Hash,
     abi: erc20ABI,
     functionName: 'symbol',
   });
 
   const { data: decimals } = useContractRead({
-    address: address,
+    address: address as Hash,
     abi: erc20ABI,
     functionName: 'decimals',
   });
   const { data: totalSupply } = useContractRead({
-    address: address,
+    address: address as Hash,
     abi: erc20ABI,
     functionName: 'totalSupply',
   });
