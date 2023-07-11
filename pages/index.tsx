@@ -5,6 +5,8 @@ import ContractRead from '../components/ContractRead';
 import ContractWrite from '../components/ContractWrite';
 import Link from 'next/link';
 import Image from 'next/image';
+import DeepLink from '../components/DeepLink';
+import ImageUpload from '../components/ImageUpload';
 
 const { Content, Footer } = Layout;
 export default function Home() {
@@ -38,49 +40,20 @@ export default function Home() {
               Welcome to POM Demo Page
             </Typography.Title>
             <Divider />
-            <Typography.Title level={1} style={{ margin: 0 }}>
-              Wallet Connect
-            </Typography.Title>
+            <Typography.Title level={1}>Wallet Connect</Typography.Title>
             <Profile />
             <Divider />
-            <Typography.Title level={1} style={{ margin: 0 }}>
-              Contract Read
-            </Typography.Title>
+            <Typography.Title level={1}>Contract Read</Typography.Title>
             <ContractRead />
             <Divider />
-            <Typography.Title level={1} style={{ margin: 0 }}>
-              Contract Write
-            </Typography.Title>
+            <Typography.Title level={1}>Contract Write</Typography.Title>
             <ContractWrite />
             <Divider />
-            <Typography.Title level={1} style={{ margin: 0 }}>
-              DeepLink
-            </Typography.Title>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <a
-                href="https://metamask.app.link/send/0x5A2609D698DE041B1Ba77139A4229c8a161dDd9e?value=1e16
-                
-"
-                style={{ wordBreak: 'break-all' }}
-              >
-                https://metamask.app.link/send/0x5A2609D698DE041B1Ba77139A4229c8a161dDd9e?value=1e16
-              </a>
-              <div>
-                <Image
-                  src={'/qreth.png'}
-                  alt="qr"
-                  width={300}
-                  height={300}
-                ></Image>
-              </div>
-            </div>
+            <Typography.Title level={1}>DeepLink</Typography.Title>
+            <DeepLink />
+            <Divider />
+            <Typography.Title level={1}>Image Upload</Typography.Title>
+            <ImageUpload />
           </div>
         </div>
       </Content>
