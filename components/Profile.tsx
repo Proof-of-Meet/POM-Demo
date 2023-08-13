@@ -1,4 +1,5 @@
-import { Button } from 'antd';
+import { Button } from "antd";
+import { ConnectKitButton } from "connectkit";
 import {
   useAccount,
   useConnect,
@@ -6,7 +7,8 @@ import {
   useEnsName,
   useNetwork,
   useSignMessage,
-} from 'wagmi';
+} from "wagmi";
+
 const Profile = () => {
   const { chain, chains } = useNetwork();
   const { address, isConnected } = useAccount();
@@ -14,13 +16,13 @@ const Profile = () => {
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
   const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
-    message: 'gm POM frens',
+    message: "gm POM frens",
   });
 
   return (
     <div>
       {isConnected ? (
-        <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+        <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
           {chain && <div>Connected to {chain.name}</div>}
           {chains && (
             <div>
@@ -30,12 +32,12 @@ const Profile = () => {
 
           <div>Connected to {ensName ?? address}</div>
           {isSuccess && (
-            <div style={{ wordBreak: 'break-all' }}>Signature: {data}</div>
+            <div style={{ wordBreak: "break-all" }}>Signature: {data}</div>
           )}
           {isError && <div>Error signing message</div>}
 
           <Button type="primary" size="large" onClick={() => signMessage()}>
-            {isLoading ? 'Signing...' : 'Sign message'}
+            {isLoading ? "Signing..." : "Sign message"}
           </Button>
           <Button danger size="large" onClick={() => disconnect()}>
             Disconnect Wallet
@@ -43,21 +45,23 @@ const Profile = () => {
         </div>
       ) : (
         <div
-          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+          style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
         >
-          {connectors.map((connector) => (
+          {/* {connectors.map((connector) => (
             <Button
               key={connector.id}
               type="primary"
               size="large"
               onClick={() => connect({ connector })}
               style={{
-                backgroundColor: connector.name === 'MetaMask' ? '#F48420' : '',
+                backgroundColor: connector.name === "MetaMask" ? "#F48420" : "",
               }}
             >
               Connect {connector.name}
             </Button>
-          ))}
+          ))} */}
+
+          <ConnectKitButton theme="soft" mode="light" />
         </div>
       )}
     </div>

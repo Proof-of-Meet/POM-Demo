@@ -3,8 +3,7 @@ import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { WagmiConfig, createConfig, configureChains } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
-import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { MetaMaskConnector } from "@wagmi/core/connectors/metaMask";
+import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
 import {
   zoraTestnet,
@@ -22,46 +21,26 @@ export default function App({ Component, pageProps }: AppProps) {
     setMounted(true);
   }, []);
 
-  const { publicClient } = configureChains(
+  const { publicClient, chains } = configureChains(
     [mainnet, zora, zoraTestnet, optimism, optimismGoerli, baseGoerli],
     [publicProvider()]
   );
 
-  const config = createConfig({
-    connectors: [
-      new MetaMaskConnector({
-        chains: [
-          mainnet,
-          zora,
-          zoraTestnet,
-          optimism,
-          optimismGoerli,
-          baseGoerli,
-        ],
-      }),
-      new CoinbaseWalletConnector({
-        chains: [
-          mainnet,
-          zora,
-          zoraTestnet,
-          optimism,
-          optimismGoerli,
-          baseGoerli,
-        ],
-        options: {
-          appName: "wagmi.sh",
-          jsonRpcUrl: "https://eth-mainnet.alchemyapi.io/v2/yourAlchemyId",
-        },
-      }),
-    ],
-
-    publicClient,
-  });
+  const config = createConfig(
+    getDefaultConfig({
+      walletConnectProjectId: "da6313719cfeb6f79fe91e37e479d4ed",
+      appName: "POM",
+      chains,
+      publicClient,
+    })
+  );
 
   return (
     mounted && (
       <WagmiConfig config={config}>
-        <Component {...pageProps} />
+        <ConnectKitProvider>
+          <Component {...pageProps} />
+        </ConnectKitProvider>
       </WagmiConfig>
     )
   );
